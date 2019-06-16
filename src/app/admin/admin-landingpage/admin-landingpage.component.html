@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-sm navbar-light bg">
+  <a class="navbar-brand brand-custom text-white cursive"><img src="">Admin</a>
+  <button class="navbar-toggler center" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false">
+    <span class="navbar-toggler-icon bg-white"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        
+        
+
+       
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white mr"><span>{{CurrentUser.fname}}</span></a>
+        </li>
+        <li class="nav-item" (click)='logout()'>
+          <a class="nav-link navbar-brand text-white mr"><span>Logout</span></a>
+        </li>
+
+      </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>

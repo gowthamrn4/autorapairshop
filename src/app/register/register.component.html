@@ -1,0 +1,176 @@
+<div class="header">
+  <nav class="navbar navbar-expand-sm navbar-light bg">
+    <a class="navbar-brand brand-custom cursive"><img src="">Rube</a>
+    <button class="navbar-toggler center" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false">
+      <span class="navbar-toggler-icon bg-white"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav ml-auto">
+          
+          <li class="nav-item">
+            <a class="nav-link navbar-brand" routerLink="/header"><span class="link"><b>Home</b></span></a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link navbar-brand" routerLink="/login"><span class="link"><b>Log in</b></span></a>
+          </li>
+  
+          <li class="nav-item">
+            <a class="nav-link navbar-brand mr" routerLink="/signup"><span class="link"><b>Sign up</b></span></a>
+          </li>
+  
+        </ul>
+    </div>
+  </nav>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-4 col-md-3">
+        <!-- <img src="https://cdn.websites.hibu.com/b7e2809425ac4644a1ada2107d1abcd6/dms3rep/multi/mobile/logo-image-847bd6e1.png" alt="shop" class="gallery img-fluid"> -->
+      </div>
+  
+      <div class="col-lg-4 col-md-6 col-sm-12 top text-center">
+        <div class="card p-4" style="width:100%;">
+          <p class="text-center"><b>Create a New Account</b></p>
+          <form #myForm='ngForm' name="myForm" (ngSubmit)='sendData(myForm.value)'>
+            <div class="form-group">
+              <input #name='ngModel' ngModel  name="name" required minlength="3" type="text" placeholder="Name" class="form-control text-capitalize" />
+              <div *ngIf="name.errors && (name.touched|| name.dirty)" class="alert text-danger">
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!name.errors.required">
+                                  Username requried
+                              </div>
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!name.errors.minlength">
+                                  Please enter minimum 3 character
+                              </div>
+                          </div>
+              </div>
+          
+              <div class="form-group">
+              <input type="text" name="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Email: name@example.com" #Email="ngModel"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required ngModel>
+                          <div *ngIf="Email.errors && (Email.touched|| Email.dirty)" class="alert text-danger">
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!Email.errors.required">
+                                  Emailid required
+                              </div>
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!Email.errors.pattern">
+                                Please enter valid email
+                            </div>
+                        </div>
+  
+              </div>
+  
+              <div class="form-group">
+              <input id="password" #password='ngModel' ngModel required minlength="8" name="password" type="password" placeholder="Password" class="form-control" />
+              <div *ngIf="password.errors && (password.touched|| password.dirty)" class="alert text-danger">
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!password.errors.required">
+                                  Password requried
+                              </div>
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!password.errors.minlength">
+                                  Please enter minimum 8 character
+                              </div>
+                          </div>
+              </div>
+  
+              <div class="form-group">
+              <input id="phone" #phone='ngModel' ngModel name="phone" required minlength="10" type="tel" placeholder="Phone" class="form-control" maxlength="10" />
+              <div *ngIf="phone.errors && (phone.touched|| phone.dirty)" class="alert text-danger">
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!phone.errors.required">
+                                  Phone requried
+                              </div>
+                              <div style="font-size:15px;margin:-10px;" [hidden]="!phone.errors.minlength">
+                                  Please enter valid mobile number
+                              </div>
+                          </div>
+              </div>
+              
+              <div class="form-group">
+                <input name="role" #role='ngModel' ngModel type="radio" value="user" (change)='change(role.value)' required=""> Vehicle Owner
+              <input name="role" #role='ngModel' ngModel type="radio" value="admin" (change)='change(role.value)' class="ml-5" required> Shop Owner
+              <div *ngIf="role.errors && (role.touched|| role.dirty)" class="alert text-danger">
+                <div style="font-size:15px;margin:-10px;" [hidden]="!role.errors.required">
+                                 SelectedBy is required
+                              </div>
+              </div>
+            </div>
+            <div *ngIf='show=="user"'>
+              <div class="form-group">
+                <input type="file" class="form-control" name="profilepic" (change)='file($event)'>
+              </div>
+            </div>
+  
+              <div *ngIf="show=='user'">
+                <div class="form-group">
+                <input id="vehicle1" #vehicle1='ngModel' ngModel name="vehicle1" type="text" placeholder="Vehicle Type 1" required class="form-control text-capitalize" />
+                <div *ngIf="vehicle1.errors && (vehicle1.touched|| vehicle1.dirty)" class="alert text-danger">
+                  <div style="font-size:15px;margin:-10px;" [hidden]="!vehicle1.errors.required">
+                                 Vehicle Type is required
+                              </div>
+                </div>
+                </div>
+  
+                <div class="form-group">
+                <input id="vehicle2" #vehicle2='ngModel' ngModel name="vehicle2" type="text" placeholder="Vehicle Type 2(optional)" class="form-control text-capitalize" />
+                </div>
+              </div>
+  
+              <div *ngIf="show=='admin'">
+                <div class="form-group">
+                <input id="address" #address='ngModel' ngModel name="address" type="text" placeholder="Shop 1: Address" required class="form-control text-capitalize" />
+                <div *ngIf="address.errors && (address.touched|| address.dirty)" class="alert text-danger">
+                  <div style="font-size:15px;margin:-10px;" [hidden]="!address.errors.required">
+                                 Address is required
+                              </div>
+                </div>
+                </div>
+  
+                <div class="form-group">
+                  <select name="city" #city='ngModel' ngModel class="form-control" required>
+                    <option disabled>City</option>
+                    <option>Bangalore</option>
+                    <option>Chennai</option>
+                  </select>
+                  <div *ngIf="city.errors && (city.touched|| city.dirty)" class="alert text-danger">
+                  <div style="font-size:15px;margin:-10px;" [hidden]="!city.errors.required">
+                                 Options is required
+                              </div>
+                </div>
+                </div>
+                
+              </div>
+            
+              
+              <div class="form-group">
+              <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <a><input type="submit" class="btn btn-info btn-no-drop mt-3" value="Submit" id="signup_form" [disabled]="!myForm.form.valid"></a>
+              </div><br>
+              <ngx-spinner [visible]="showSpinner" [config]="spinnerConfig"></ngx-spinner>
+              <!-- <div class="modal" id="myModal">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                    
+                      <div class="modal-header text-center">
+                        <h4 class="modal-title">Registred Successfully</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success" routerLink='/login' data-dismiss="modal">Ok</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+              </div> -->
+  
+              <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                <a routerLink='/login'>Already have an account?</a>
+              </div>
+            </div>
+            </form>
+            
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-3"></div>
+      
+    </div>
+  </div>
+  

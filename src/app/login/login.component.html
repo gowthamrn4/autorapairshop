@@ -1,0 +1,82 @@
+<div>
+	<nav class="navbar navbar-expand-sm navbar-light bg">
+	  <a class="navbar-brand brand-custom text-white cursive"><img src="">Rube</a>
+	  <button class="navbar-toggler center" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false">
+	    <span class="navbar-toggler-icon bg-white"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+	      <ul class="navbar-nav ml-auto">
+	        
+	      	<li class="nav-item">
+	          <a class="nav-link navbar-brand text-white" routerLink="/home"><span class="link">Home</span></a>
+	        </li>
+
+	        <li class="nav-item">
+	          <a class="nav-link navbar-brand text-white" routerLink="/login"><span class="link">Log in</span></a>
+	        </li>
+
+	        <li class="nav-item">
+	          <a class="nav-link navbar-brand text-white mr" routerLink="/signup"><span class="link">Sign up</span></a>
+	        </li>
+
+	      </ul>
+	  </div>
+	</nav>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-4 col-md-2"></div>
+		<div class="col-lg-4 col-md-6 col-sm-12 top">
+			<div class="card p-3" style="width:100%;">
+				<p class="rube text-center">Login To Rube</p>
+
+				<form #loginForm='ngForm' name="loginForm" (ngSubmit)='userData(loginForm.value)'>
+					<div class="form-group">
+						<input type="text" name="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Email: name@example.com" #Email="ngModel"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required ngModel>
+                        <div *ngIf="Email.errors && (Email.touched|| Email.dirty)" class="alert text-danger">
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!Email.errors.required">
+                                Emailid required
+                            </div>
+	                        <div style="font-size:15px;margin:-10px;" [hidden]="!Email.errors.pattern">
+	                            Please enter valid email
+	                        </div>
+	                    </div>
+			    	</div>
+
+			    	<div class="form-group">
+						<input id="password" #password='ngModel' ngModel name="password" required minlength="8" type="password" placeholder="Password" class="form-control" />
+						<div *ngIf="password.errors && (password.touched|| password.dirty)" class="alert text-danger">
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!password.errors.required">
+                                Password requried
+                            </div>
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!password.errors.minlength">
+                                Please enter minimum 8 character
+                            </div>
+                        </div> 
+			    	</div>
+
+			   
+			    	
+			    	<br>
+			    	<div class="form-group">
+						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+							<input type="submit" class="btn btn-round" value="Submit" [disabled]="!loginForm.form.valid" id="signup_form">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-lg-12 col-md-12 col-sm-12 text-center">
+							<p>New User? &nbsp;<a routerLink="/signupform">Sign-Up</a></p>
+						</div>
+					</div>
+					
+			    </form>
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-2"></div>
+		
+	</div>
+</div>
+
+<ngx-spinner [visible]="showSpinner" [config]="spinnerConfig"></ngx-spinner>

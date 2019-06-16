@@ -1,0 +1,28 @@
+.rube{
+	background-color: #6d4b70;
+	height: 50px;
+	color: white;
+	padding: 10px;
+}
+.top{
+	margin-top: 7.9%;
+	margin-bottom: 8%;
+}
+.btn{
+	background-color: #6d4b70;
+	color: white;
+}
+.bg{
+	background-color: #6d4b70;
+	box-shadow: 5px 6px 5px black;
+}
+.mr{
+	margin-right: 120px;
+}
+.cursive {
+	font-family: cursive;
+	margin-left: 110px;
+}
+.link:hover {
+	color: blue;
+}

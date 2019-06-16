@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-sm navbar-light bg">
+  <a routerLink='/userlanding/userReq' class="navbar-brand brand-custom text-white cursive"><img src="">User</a>
+  <button class="navbar-toggler center" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" aria-expanded="false">
+    <span class="navbar-toggler-icon bg-white"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav ml-auto">
+        
+        
+        <li class="nav-item" routerLink="/userlanding/userrequestList">
+          <a class="nav-link navbar-brand text-white mr"><span>Request</span></a>
+        </li>
+       
+        <li class="nav-item">
+          <a class="nav-link navbar-brand text-white mr"><span>{{CurrentUser.fname}}</span></a>
+        </li>
+        <li class="nav-item" (click)='logout()'>
+          <a class="nav-link navbar-brand text-white mr"><span>Logout</span></a>
+        </li>
+
+      </ul>
+  </div>
+</nav>
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-3">
+    <div class="card">
+      <div class="card-header text-center">Profile</div><hr>
+      <div class="card-body">
+        <div class="text-center">
+            <img src="{{dp}}" class="img-thumbnail" width='150'>
+        </div><hr>
+        <div class="row">
+          <div class="col-md-4 col-lg-4 col-sm-4">
+            Name
+          </div>
+          <div class="col-md-8 col-lg-8 col-sm-8 text-right">
+              {{bindData.name}}
+            </div>
+        </div><hr>
+        <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4">
+              Phone
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-8 text-right">
+                {{bindData.phone}}
+              </div>
+          </div><hr>
+          <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4">
+              Email
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-8 text-right">
+                {{bindData.email}}
+              </div>
+          </div><hr>
+          <div class="row">
+            <div class="col-md-4 col-lg-4 col-sm-4">
+              Role
+            </div>
+            <div class="col-md-8 col-lg-8 col-sm-8 text-right">
+                {{bindData.role}}
+              </div>
+          </div>
+      </div>
+      <div class="card-footer text-center">
+        2019@Triodesk
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-8 col-md-8 col-sm-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+<div class="bg footer">
+    <div class="row">
+      <div class="col-lg-4">
+        <p class="text-white text-center mt-3 align">© 2019 Rube Technologies Inc.</p>
+      </div>
+      <div class="offset-lg-4 col-lg-4 mt-3 mb-3 text-center">
+        <i class="fab fa-facebook-f text-white mr-4"></i>
+        <i class="fab fa-twitter text-white mr-4"></i>
+        <i class="fab fa-youtube text-white mr-4"></i>
+        <i class="fab fa-google-plus-g text-white mr-4"></i>
+        <i class="fab fa-instagram text-white mr-4"></i>
+      </div>
+    </div>
+  </div>

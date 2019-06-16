@@ -1,0 +1,111 @@
+<div class="container-fluid"><br>
+	<div class="row">
+    <div class="col-lg-2 col-md-2"></div>
+		<div class="col-lg-5 col-md-5 col-sm-12 top">
+			<div class="card p-4" style="width:100%;">
+				<p class="text-center"><b>Add Details</b></p>
+				<form #myForm='ngForm' name="myForm" (ngSubmit)='userRequest(myForm.value)'>
+					<div class="form-group">
+						<input #name='ngModel' ngModel [(ngModel)]='bindData.name' name="name" required minlength="3" type="text" placeholder="Name" class="form-control" />
+						<div *ngIf="name.errors && (name.touched|| name.dirty)" class="alert text-danger">
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!name.errors.required">
+                                Username requried
+                            </div>
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!name.errors.minlength">
+                                Please enter minimum 3 character
+                            </div>
+                        </div>
+			    	</div>
+				
+			    	<div class="form-group">
+						<input type="text" name="email" class="form-control" id="email" [(ngModel)]="bindData.email" placeholder="Email: name@example.com" #Email="ngModel"  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required ngModel>
+                        <div *ngIf="Email.errors && (Email.touched|| Email.dirty)" class="alert text-danger">
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!Email.errors.required">
+                                Emailid required
+                            </div>
+	                        <div style="font-size:15px;margin:-10px;" [hidden]="!Email.errors.pattern">
+	                            Please enter valid email
+	                        </div>
+	                    </div>
+
+			    	</div>
+
+			    	<div class="form-group">
+						<input id="phone" #phone='ngModel' ngModel name="phone" [(ngModel)]='bindData.phone' required minlength="10" type="tel" placeholder="Phone" class="form-control" />
+						<div *ngIf="phone.errors && (phone.touched|| phone.dirty)" class="alert text-danger">
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!phone.errors.required">
+                                Phone requried
+                            </div>
+                            <div style="font-size:15px;margin:-10px;" [hidden]="!phone.errors.minlength">
+                                Please enter minimum 10 character
+                            </div>
+                        </div>
+			    	</div>
+
+			    	<select class="form-control" name="city" #city='ngModel' ngModel (change)='change(city.value)'>
+						<option disabled value="">City</option>
+						<option value="Banglore">Banglore</option>
+						<option value="Chennai">Chennai</option>
+					</select>
+					<br>
+					<div *ngIf="see=='Banglore'">
+						<select class="form-control"name='location' #location='ngModel' ngModel>
+							<option value="" disabled>Banglore Location</option>
+							<option>Banglore Palace</option>
+							<option>Cubbon Park</option>
+							<option>Lalbagh Botanical Garden</option>
+							<option>Tipu Sultan Palace</option>
+							<option>Ulsoor Lake</option>
+						</select>
+					</div>
+
+					<div *ngIf="see=='Chennai'">
+						<select class="form-control" #location='ngModel' name='location' ngModel >
+							<option disabled value="">Chennai Location</option>
+							<option>Madras Museum</option>
+							<option>Marina Beach</option>
+							<option>Queens Land</option>
+							<option>Semmozhi Poonga</option>
+							<option>Valluvar Kottam</option>
+						</select>
+					</div>
+					<br>
+					<select name="wheeler" #wheeler='ngModel' placeholder='Vehicle Type' ngModel  class="form-control">
+						<option disabledn value="">Vehicle Type</option>
+						<option value="two wheeler">Two Wheeler</option> 
+						<option value="four wheeler">Four Wheeler</option>
+					</select>
+					<br>
+					<input type="text" name="wheelerNumber" #wheelerNumber='ngModel' placeholder="Enter Wheeler No" ngModel class="form-control"><br>
+			    	<div class="form-group">
+						<div class="col-lg-12 col-md-12 col-sm-12 text-center mt-4">
+							<a><input type="submit" class="btn btn-info btn-no-drop mt-3" value="Submit" id="signup_form" [disabled]="!myForm.form.valid"></a>
+						</div>
+
+						<!-- <div class="modal" id="myModal">
+						    <div class="modal-dialog modal-sm">
+						      <div class="modal-content">
+						      
+						        <div class="modal-header text-center">
+						          <h4 class="modal-title">Request Accepted</h4>
+						          <button type="button" class="close" data-dismiss="modal">&times;</button>
+						        </div>
+						        
+						        <div class="modal-footer">
+						          <button type="button" class="btn btn-success" routerLink='/loginform' data-dismiss="modal">Ok</button>
+						        </div>
+						        
+						      </div>
+						    </div>
+						</div> -->
+					</div>
+
+
+			    </form>
+			    
+			</div>
+		</div>
+		<div class="col-lg-4 col-md-3"></div>
+	</div>
+</div>
+<ngx-spinner [visible]="showSpinner" [config]="spinnerConfig"></ngx-spinner>
